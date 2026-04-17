@@ -1,0 +1,44 @@
+﻿@page
+@model InventarioWeb.Pages.Productos.CrearModel
+@{
+    ViewData["Title"] = "Nuevo Producto";
+}
+
+<div class="container mt-4">
+    <h1>Nuevo Producto</h1>
+    <hr />
+
+    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <div class="alert alert-danger">@Model.ErrorMessage</div>
+    }
+
+    <form method="post">
+        <div class="mb-3">
+            <label class="form-label">Nombre</label>
+            <input type="text" name="Nombre" class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Categoría</label>
+            <input type="text" name="Categoria" class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Descripción</label>
+            <textarea name="Descripcion" class="form-control" rows="3"></textarea>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Precio</label>
+            <input type="number" name="Precio" step="0.01" class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Cantidad en Stock</label>
+            <input type="number" name="CantidadStock" class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Fecha de Vencimiento (opcional)</label>
+            <input type="date" name="FechaVencimiento" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <a href="/" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>

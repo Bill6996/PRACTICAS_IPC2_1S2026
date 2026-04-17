@@ -1,0 +1,48 @@
+﻿@page "{id:int}"
+@model InventarioWeb.Pages.Productos.DetalleModel
+@{
+    ViewData["Title"] = "Detalle del Producto";
+}
+
+<div class="container mt-4">
+    <h1>Detalle del Producto</h1>
+    <hr />
+
+    @if (Model.Producto == null)
+    {
+        <div class="alert alert-danger">Producto no encontrado.</div>
+    }
+    else
+    {
+        <dl class="row">
+            <dt class="col-sm-3">ID</dt>
+            <dd class="col-sm-9">@Model.Producto.Id</dd>
+
+            <dt class="col-sm-3">Nombre</dt>
+            <dd class="col-sm-9">@Model.Producto.Nombre</dd>
+
+            <dt class="col-sm-3">Categoría</dt>
+            <dd class="col-sm-9">@Model.Producto.Categoria</dd>
+
+            <dt class="col-sm-3">Descripción</dt>
+            <dd class="col-sm-9">@Model.Producto.Descripcion</dd>
+
+            <dt class="col-sm-3">Precio</dt>
+            <dd class="col-sm-9">Q @Model.Producto.Precio.ToString("F2")</dd>
+
+            <dt class="col-sm-3">Cantidad en Stock</dt>
+            <dd class="col-sm-9">@Model.Producto.CantidadStock</dd>
+
+            <dt class="col-sm-3">Fecha de Vencimiento</dt>
+            <dd class="col-sm-9">
+                @(Model.Producto.FechaVencimiento.HasValue
+                    ? Model.Producto.FechaVencimiento.Value.ToString("dd/MM/yyyy")
+                    : "No aplica")
+            </dd>
+        </dl>
+
+        <a href="/Productos/Editar/@Model.Producto.Id" class="btn btn-primary">Editar</a>
+        <a href="/Productos/Eliminar/@Model.Producto.Id" class="btn btn-danger">Eliminar</a>
+        <a href="/" class="btn btn-secondary">Volver</a>
+    }
+</div>

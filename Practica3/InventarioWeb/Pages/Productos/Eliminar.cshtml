@@ -1,0 +1,35 @@
+﻿@page "{id:int}"
+@model InventarioWeb.Pages.Productos.EliminarModel
+@{
+    ViewData["Title"] = "Eliminar Producto";
+}
+
+<div class="container mt-4">
+    <h1>Eliminar Producto</h1>
+    <hr />
+
+    <div class="alert alert-warning">
+        ¿Estás seguro que deseas eliminar este producto?
+    </div>
+
+    <dl class="row">
+        <dt class="col-sm-3">Nombre</dt>
+        <dd class="col-sm-9">@Model.Producto.Nombre</dd>
+        <dt class="col-sm-3">Categoría</dt>
+        <dd class="col-sm-9">@Model.Producto.Categoria</dd>
+        <dt class="col-sm-3">Descripción</dt>
+        <dd class="col-sm-9">@Model.Producto.Descripcion</dd>
+        <dt class="col-sm-3">Precio</dt>
+        <dd class="col-sm-9">Q @Model.Producto.Precio.ToString("F2")</dd>
+        <dt class="col-sm-3">Stock</dt>
+        <dd class="col-sm-9">@Model.Producto.CantidadStock</dd>
+        <dt class="col-sm-3">Vencimiento</dt>
+        <dd class="col-sm-9">@(Model.Producto.FechaVencimiento.HasValue? Model.Producto.FechaVencimiento.Value.ToString("dd/MM/yyyy") : "N/A")</dd>
+    </dl>
+
+    <form method="post">
+        <input type="hidden" name="Id" value="@Model.Producto.Id" />
+        <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+        <a href="/" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>

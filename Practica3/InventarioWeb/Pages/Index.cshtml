@@ -1,0 +1,49 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Inventario de Productos";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1>Inventario de Productos</h1>
+        <a href="/Productos/Crear" class="btn btn-success">+ Nuevo Producto</a>
+    </div>
+
+    @if (!Model.Productos.Any())
+    {
+        <div class="alert alert-info">No hay productos en el inventario.</div>
+    }
+    else
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Categoría</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                    <th>Vencimiento</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var producto in Model.Productos)
+                {
+                    <tr>
+                        <td>@producto.Nombre</td>
+                        <td>@producto.Categoria</td>
+                        <td>Q @producto.Precio.ToString("F2")</td>
+                        <td>@producto.CantidadStock</td>
+                        <td>@(producto.FechaVencimiento.HasValue? producto.FechaVencimiento.Value.ToString("dd/MM/yyyy") : "N/A")</td>
+                        <td>
+                            <a href="/Productos/Detalle/@producto.Id" class="btn btn-info btn-sm">Ver</a>
+                            <a href="/Productos/Editar/@producto.Id" class="btn btn-primary btn-sm">Editar</a>
+                            <a href="/Productos/Eliminar/@producto.Id" class="btn btn-danger btn-sm">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

@@ -1,0 +1,46 @@
+﻿@page "{id:int}"
+@model InventarioWeb.Pages.Productos.EditarModel
+@{
+    ViewData["Title"] = "Editar Producto";
+}
+
+<div class="container mt-4">
+    <h1>Editar Producto</h1>
+    <hr />
+
+    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <div class="alert alert-danger">@Model.ErrorMessage</div>
+    }
+
+    <form method="post">
+        <input type="hidden" name="Id" value="@Model.Producto.Id" />
+        <div class="mb-3">
+            <label class="form-label">Nombre</label>
+            <input type="text" name="Nombre" class="form-control" value="@Model.Producto.Nombre" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Categoría</label>
+            <input type="text" name="Categoria" class="form-control" value="@Model.Producto.Categoria" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Descripción</label>
+            <textarea name="Descripcion" class="form-control" rows="3">@Model.Producto.Descripcion</textarea>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Precio</label>
+            <input type="number" name="Precio" step="0.01" class="form-control" value="@Model.Producto.Precio" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Cantidad en Stock</label>
+            <input type="number" name="CantidadStock" class="form-control" value="@Model.Producto.CantidadStock" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Fecha de Vencimiento (opcional)</label>
+            <input type="date" name="FechaVencimiento" class="form-control"
+                   value="@(Model.Producto.FechaVencimiento.HasValue? Model.Producto.FechaVencimiento.Value.ToString("yyyy-MM-dd") : "")" />
+        </div>
+        <button type="submit" class="btn btn-primary">Actualizar</button>
+        <a href="/" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>

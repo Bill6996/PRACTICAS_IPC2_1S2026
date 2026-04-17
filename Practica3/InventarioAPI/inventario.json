@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "nombre": "Leche Entera",
+    "categoria": "Lácteos",
+    "descripcion": "Leche entera pasteurizada 1 litro",
+    "precio": 12.50,
+    "cantidadStock": 50,
+    "fechaVencimiento": "2026-05-01T00:00:00"
+  },
+  {
+    "id": 2,
+    "nombre": "Sartén Antiadherente",
+    "categoria": "Utensilios",
+    "descripcion": "Sartén de 28cm antiadherente",
+    "precio": 150.00,
+    "cantidadStock": 10,
+    "fechaVencimiento": null
+  }
+]
